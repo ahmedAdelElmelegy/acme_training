@@ -14,6 +14,7 @@ class _SidBarListState extends State<SidBarList> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -24,7 +25,9 @@ class _SidBarListState extends State<SidBarList> {
             selectedIndex = index;
           });
           widget.function?.call(index);
-          Navigator.pop(context);
+          size.width < 1200
+              ? Navigator.pop(context)
+              : null; // Navigator.pop(context);
         },
         child: SidBarItem(
           model: AppConstants.sideBarItems[index],

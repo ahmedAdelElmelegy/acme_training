@@ -23,7 +23,7 @@ class _HomeDesktopLayoutState extends State<HomeDesktopLayout> {
     const Column(children: [Text('Profile')]),
     const Column(children: [Text('Settings')]),
   ];
-  int selectedIndex = 1;
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
