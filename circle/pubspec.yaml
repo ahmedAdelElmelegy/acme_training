@@ -37,8 +37,10 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.1
   get_it: ^8.2.0
+  google_translator: ^1.0.0
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.3
+  translator: ^1.0.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

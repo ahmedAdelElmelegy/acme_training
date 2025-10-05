@@ -1,0 +1,29 @@
+name: home # غيّر الاسم حسب الباكدج (home, auth, cart)
+description: "Home package for multi package architecture"
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core:
+    path: ../core
+  product:
+    path: ../product
+  category:
+    path: ../category
+  mains:
+    path: ../mains    
+ 
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
