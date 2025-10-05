@@ -25,7 +25,7 @@ class _SidBarListState extends State<SidBarList> {
             selectedIndex = index;
           });
           widget.function?.call(index);
-          size.width < 1200
+          size.width < 1280
               ? Navigator.pop(context)
               : null; // Navigator.pop(context);
         },

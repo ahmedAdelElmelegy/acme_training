@@ -10,14 +10,14 @@ class TransactionDesktopBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DashBoardHeader(),
-        Expanded(
-          child: Container(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          DashBoardHeader(),
+          Container(
             padding: EdgeInsets.symmetric(vertical: 24, horizontal: 40),
             decoration: BoxDecoration(color: ColorManager.grayLight2),
-            child: ListView(
+            child: Column(
               children: [
                 Row(
                   children: [
@@ -31,8 +31,8 @@ class TransactionDesktopBody extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
