@@ -1,10 +1,8 @@
 import 'package:fitness_app/core/helper/constants.dart';
 import 'package:fitness_app/core/helper/spacing.dart';
 import 'package:fitness_app/core/theme/colors.dart';
-import 'package:fitness_app/core/widgets/responsive_layout.dart';
 import 'package:fitness_app/core/widgets/svg_icon.dart';
-import 'package:fitness_app/feature/home/presentation/screens/home_mobile_screen.dart';
-import 'package:fitness_app/feature/home/presentation/screens/home_tablet_screen.dart';
+import 'package:fitness_app/feature/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,11 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   List<Widget> screens = [
-    ResponsiveLayout(
-      mobile: (context) => const HomeMobileScreen(),
-      tablet: (context) => const HomeTabletScreen(),
-      desktop: (context) => Container(),
-    ),
+    HomeScreen(),
     Center(child: Text('bookMark')),
     Center(child: Text('search')),
     Center(child: Text('play')),

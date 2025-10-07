@@ -1,4 +1,4 @@
-import 'package:fitness_app/feature/home/presentation/wigets/lesson_content_item.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/lesson_content_item.dart';
 import 'package:flutter/material.dart';
 
 class LessonContentList extends StatefulWidget {

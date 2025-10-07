@@ -2,7 +2,7 @@ import 'package:fitness_app/core/helper/constants.dart';
 import 'package:fitness_app/core/helper/spacing.dart';
 import 'package:fitness_app/core/theme/colors.dart';
 import 'package:fitness_app/core/theme/style.dart';
-import 'package:fitness_app/feature/home/presentation/wigets/info_row_widget.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/info_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

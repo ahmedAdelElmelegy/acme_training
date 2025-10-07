@@ -1,4 +1,4 @@
-import 'package:fitness_app/feature/home/presentation/wigets/slider_item.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/slider_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

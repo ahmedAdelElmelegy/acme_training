@@ -1,18 +1,16 @@
 import 'package:fitness_app/core/helper/constants.dart';
 import 'package:fitness_app/core/helper/spacing.dart';
-import 'package:fitness_app/core/theme/colors.dart';
-import 'package:fitness_app/core/theme/style.dart';
 import 'package:fitness_app/core/widgets/custom_text_field.dart';
-import 'package:fitness_app/feature/home/presentation/wigets/discount_item.dart';
-import 'package:fitness_app/feature/home/presentation/wigets/home_app_bar.dart';
-import 'package:fitness_app/feature/home/presentation/wigets/home_slider.dart';
-import 'package:fitness_app/feature/home/presentation/wigets/home_trending_course_list_view.dart';
-import 'package:fitness_app/feature/home/presentation/wigets/row_of_home.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/discount_item.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/home_app_bar.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/home_slider.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/home_trending_course_list_view.dart';
+import 'package:fitness_app/feature/home/presentation/widgets/row_of_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeMobileScreen extends StatelessWidget {
-  const HomeMobileScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

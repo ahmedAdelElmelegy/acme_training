@@ -30,7 +30,6 @@ class GetStartedScreen extends StatelessWidget {
               ),
             ),
           ),
-          // محتوى الصفحة
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 70.w),
             child: Column(
@@ -54,18 +53,17 @@ class GetStartedScreen extends StatelessWidget {
                 CustomBtn(
                   child: Text('Get Started', style: AppTextStyle.f16BoldWhite),
                   onPressed: () {
-                    GoRouter.of(context).pushReplacement('/main');
+                    context.go('/main');
                   },
                 ),
                 verticalSpace(24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Flexible(
+                    FittedBox(
                       child: Text(
                         'Already have account?',
                         style: AppTextStyle.f16MediumWhite,
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     SizedBox(width: 5.w),
