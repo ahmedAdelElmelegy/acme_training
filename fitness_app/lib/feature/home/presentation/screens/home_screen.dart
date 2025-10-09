@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:fitness_app/core/helper/constants.dart';
 import 'package:fitness_app/core/helper/spacing.dart';
 import 'package:fitness_app/core/widgets/custom_text_field.dart';
@@ -7,10 +9,45 @@ import 'package:fitness_app/feature/home/presentation/widgets/home_slider.dart';
 import 'package:fitness_app/feature/home/presentation/widgets/home_trending_course_list_view.dart';
 import 'package:fitness_app/feature/home/presentation/widgets/row_of_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void didChangeDependencies() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.light,
+        ),
+      );
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didPopNext() {
+    _applySystemUi();
+  }
+
+  void _applySystemUi() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.light,
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

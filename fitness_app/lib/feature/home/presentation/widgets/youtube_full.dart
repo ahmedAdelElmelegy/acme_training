@@ -35,10 +35,23 @@ class _FullYoutubePlayerState extends State<FullYoutubePlayer> {
     );
   }
 
+  void _restoreSystemUi() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
+
   @override
   void dispose() {
     _controller.dispose();
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    _restoreSystemUi();
     super.dispose();
   }
 
@@ -51,6 +64,7 @@ class _FullYoutubePlayerState extends State<FullYoutubePlayer> {
             controller: _controller,
             showVideoProgressIndicator: true,
             progressIndicatorColor: Colors.red,
+
             onReady: () {
               debugPrint('Player is ready.');
             },

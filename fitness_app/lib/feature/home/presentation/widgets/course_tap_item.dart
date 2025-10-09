@@ -15,9 +15,13 @@ class CourseTabItem extends StatelessWidget {
         children: [
           Text(
             text,
-            style: AppTextStyle.f16BoldBlack.copyWith(
-              color: isSelected ? ColorManager.primary : ColorManager.gray,
-            ),
+            style: isSelected
+                ? AppTextStyle.f16BoldBlack.copyWith(
+                    color: ColorManager.primary,
+                  )
+                : AppTextStyle.f16MediumBlack.copyWith(
+                    color: ColorManager.gray,
+                  ),
             overflow: TextOverflow.ellipsis,
           ),
           verticalSpace(8),

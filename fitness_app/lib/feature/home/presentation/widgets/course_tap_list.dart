@@ -1,5 +1,6 @@
 import 'package:fitness_app/feature/home/presentation/widgets/course_tap_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseTabList extends StatefulWidget {
   const CourseTabList({super.key});
@@ -19,14 +20,14 @@ class _CourseTabListState extends State<CourseTabList> {
       child: Row(
         children: List.generate(
           courseTap.length,
-          (index) => Padding(
-            padding: EdgeInsets.only(right: 12),
-            child: GestureDetector(
-              onTap: () {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
+          (index) => GestureDetector(
+            onTap: () {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 30.w),
               child: CourseTabItem(
                 text: courseTap[index],
                 isSelected: currentIndex == index,

@@ -9,10 +9,29 @@ import 'package:fitness_app/feature/home/presentation/widgets/course_tap_list.da
 import 'package:fitness_app/feature/home/presentation/widgets/lesson_content_list.dart';
 import 'package:fitness_app/feature/home/presentation/widgets/youtube_full.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TrendingCourseDetailScreen extends StatelessWidget {
+class TrendingCourseDetailScreen extends StatefulWidget {
   const TrendingCourseDetailScreen({super.key});
+
+  @override
+  State<TrendingCourseDetailScreen> createState() =>
+      _TrendingCourseDetailScreenState();
+}
+
+class _TrendingCourseDetailScreenState
+    extends State<TrendingCourseDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +49,7 @@ class TrendingCourseDetailScreen extends StatelessWidget {
                   CourseInfoTitle(),
                   verticalSpace(24),
                   CourseTabList(),
+                  verticalSpace(10),
                   LessonContentList(),
                   verticalSpace(18),
                   CustomBtn(

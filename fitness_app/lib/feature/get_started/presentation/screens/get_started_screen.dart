@@ -53,17 +53,25 @@ class GetStartedScreen extends StatelessWidget {
                 CustomBtn(
                   child: Text('Get Started', style: AppTextStyle.f16BoldWhite),
                   onPressed: () {
-                    context.go('/main');
+                    context.pushReplacement('/main');
+                    // context.go('/main');
                   },
                 ),
                 verticalSpace(24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FittedBox(
-                      child: Text(
-                        'Already have account?',
-                        style: AppTextStyle.f16MediumWhite,
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width * .45,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+
+                        child: Text(
+                          'Already have account?',
+                          style: AppTextStyle.f16MediumWhite,
+                          maxLines: 1,
+                          // overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                     SizedBox(width: 5.w),
