@@ -7,7 +7,7 @@ import 'package:customs/feature/home/presentation/screens/home_tablet_body.dart'
 import 'package:customs/feature/main/presentation/screens/main_desktop_layout.dart';
 import 'package:customs/feature/main/presentation/screens/main_mobile_layout.dart';
 import 'package:customs/feature/main/presentation/screens/main_tablet_layout.dart';
-import 'package:customs/feature/services/screens/services.dart';
+import 'package:customs/feature/services/presentation/screens/services.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

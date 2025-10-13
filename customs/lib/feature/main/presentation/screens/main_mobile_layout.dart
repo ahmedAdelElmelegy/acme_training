@@ -4,7 +4,7 @@ import 'package:customs/feature/contact_us/presentation/screens/contact_us_scree
 import 'package:customs/feature/home/presentation/screens/home_mobile_body.dart';
 import 'package:customs/feature/home/presentation/widgets/custom_drawer.dart';
 import 'package:customs/feature/home/presentation/widgets/fotter.dart';
-import 'package:customs/feature/services/screens/services.dart';
+import 'package:customs/feature/services/presentation/screens/services.dart';
 import 'package:flutter/material.dart';
 
 class MainMobileLayout extends StatefulWidget {

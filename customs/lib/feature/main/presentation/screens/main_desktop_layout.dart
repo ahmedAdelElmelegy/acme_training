@@ -4,7 +4,7 @@ import 'package:customs/feature/contact_us/presentation/screens/contact_us_scree
 import 'package:customs/feature/home/presentation/screens/home_desktop_body.dart';
 import 'package:customs/feature/home/presentation/widgets/fotter.dart';
 import 'package:customs/feature/home/presentation/widgets/header.dart';
-import 'package:customs/feature/services/screens/services.dart';
+import 'package:customs/feature/services/presentation/screens/services.dart';
 import 'package:flutter/material.dart';
 
 class MainDesktopLayout extends StatefulWidget {
