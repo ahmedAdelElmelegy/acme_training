@@ -1,6 +1,7 @@
 import 'package:customs/core/theme/style.dart';
 import 'package:customs/core/widgets/custom_btn.dart';
 import 'package:customs/core/widgets/home_card_section.dart';
+import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:customs/feature/home/presentation/widgets/acdl_data_form.dart';
 import 'package:customs/feature/home/presentation/widgets/basic_data_form.dart';
 import 'package:customs/feature/home/presentation/widgets/beneficiary_form.dart';
@@ -10,6 +11,7 @@ import 'package:customs/feature/home/presentation/widgets/home_route.dart';
 import 'package:customs/feature/home/presentation/widgets/parties_form.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeTabletBody extends StatelessWidget {
   const HomeTabletBody({super.key});
@@ -46,7 +48,14 @@ class HomeTabletBody extends StatelessWidget {
                           ),
                           SizedBox(width: 16),
                           OutlinedButton.icon(
-                            onPressed: () {},
+                            onPressed: () {
+                              final forms = context.read<HomeCubit>().formKeys;
+                              for (var form in forms) {
+                                if (form.currentState!.validate()) {
+                                  debugPrint('valid');
+                                }
+                              }
+                            },
                             icon: Icon(Icons.save),
                             label: Text('save'.tr()),
                           ),
