@@ -1,6 +1,5 @@
 import 'package:customs/core/error/validator.dart';
-import 'package:customs/core/widgets/custom_drop_down.dart';
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,9 @@ class BasicDataMobileForm extends StatefulWidget {
 }
 
 class _BasicDataMobileFormState extends State<BasicDataMobileForm> {
+  String? dro1;
+  String? dro2;
+  String? dro3;
   @override
   Widget build(BuildContext context) {
     final formKey = context.read<HomeCubit>().formKeys;
@@ -23,37 +25,61 @@ class _BasicDataMobileFormState extends State<BasicDataMobileForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomTextField(
+          CustomInputField(
             label: 'permit_number'.tr(),
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomInputField(
             label: 'permit_date'.tr(),
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomInputField(
             label: 'permit_issue_date'.tr(),
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
+            label: 'transportation_method'.tr(),
             items: ["1", "2", "3"],
-            title: 'transportation_method'.tr(),
+            onChanged: (value) {
+              setState(() {
+                dro1 = value;
+              });
+            },
+            selectedValue: dro1,
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.dropdown,
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
+            label: 'country_of_destination'.tr(),
             items: ["1", "2", "3"],
-            title: 'country_of_destination'.tr(),
+            onChanged: (value) {
+              setState(() {
+                dro2 = value;
+              });
+            },
+            selectedValue: dro2,
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.dropdown,
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
+            label: 'wajh_port'.tr(),
             items: ["1", "2", "3"],
-            title: 'wajh_port'.tr(),
+            onChanged: (value) {
+              setState(() {
+                dro3 = value;
+              });
+            },
+            selectedValue: dro3,
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.dropdown,
           ),
         ],
       ),

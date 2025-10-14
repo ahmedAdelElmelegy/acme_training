@@ -1,6 +1,5 @@
 import 'package:customs/core/error/validator.dart';
-import 'package:customs/core/widgets/custom_drop_down.dart';
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,9 @@ class BasicDataForm extends StatefulWidget {
 }
 
 class _BasicDataFormState extends State<BasicDataForm> {
+  String? dro1;
+  String? dro2;
+
   @override
   Widget build(BuildContext context) {
     final homeCubit = context.read<HomeCubit>();
@@ -24,16 +26,18 @@ class _BasicDataFormState extends State<BasicDataForm> {
           Row(
             children: [
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   label: 'permit_number'.tr(),
                   validator: (value) => Validator.validateEmpty(),
+                  type: InputType.text,
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   label: 'permit_date'.tr(),
                   validator: (value) => Validator.validateEmpty(),
+                  type: InputType.text,
                 ),
               ),
             ],
@@ -42,16 +46,25 @@ class _BasicDataFormState extends State<BasicDataForm> {
           Row(
             children: [
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   label: 'permit_issue_date'.tr(),
                   validator: (value) => Validator.validateEmpty(),
+                  type: InputType.text,
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   items: ["1", "2", "3"],
-                  title: 'transportation_method'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro1 = value;
+                    });
+                  },
+                  selectedValue: dro1,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'transportation_method'.tr(),
                   validator: (value) => Validator.validateEmpty(),
                 ),
               ),
@@ -61,17 +74,33 @@ class _BasicDataFormState extends State<BasicDataForm> {
           Row(
             children: [
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   items: ["1", "2", "3"],
-                  title: 'country_of_destination'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro2 = value;
+                    });
+                  },
+                  selectedValue: dro2,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'country_of_destination'.tr(),
                   validator: (value) => Validator.validateEmpty(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   items: ["1", "2", "3"],
-                  title: 'wajh_port'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro2 = value;
+                    });
+                  },
+                  selectedValue: dro2,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'wajh_port'.tr(),
                   validator: (value) => Validator.validateEmpty(),
                 ),
               ),

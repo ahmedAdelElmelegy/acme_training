@@ -1,4 +1,4 @@
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:customs/core/error/validator.dart';
@@ -23,30 +23,34 @@ class _AcidDataFormState extends State<AcidDataForm> {
           Row(
             children: [
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'acid_data_number'.tr(),
+                  type: InputType.text,
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'acid_tax_number'.tr(),
+                  type: InputType.text,
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'acid_country'.tr(),
+                  type: InputType.text,
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'acid_number'.tr(),
+                  type: InputType.text,
                 ),
               ),
             ],

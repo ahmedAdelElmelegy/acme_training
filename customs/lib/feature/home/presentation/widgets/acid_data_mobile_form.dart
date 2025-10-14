@@ -1,5 +1,5 @@
 import 'package:customs/core/error/validator.dart';
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -21,24 +21,28 @@ class _AcidDataMobileFormState extends State<AcidDataMobileForm> {
       key: formKey[2],
       child: Column(
         children: [
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'acid_data_number'.tr(),
+            type: InputType.text,
           ),
           const SizedBox(width: 30),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'acid_tax_number'.tr(),
+            type: InputType.text,
           ),
           const SizedBox(width: 30),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'acid_country'.tr(),
+            type: InputType.text,
           ),
           const SizedBox(width: 30),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'acid_number'.tr(),
+            type: InputType.text,
           ),
         ],
       ),

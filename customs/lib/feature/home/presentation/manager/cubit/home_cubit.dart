@@ -10,4 +10,5 @@ class HomeCubit extends Cubit<HomeState> {
     5,
     (_) => GlobalKey<FormState>(),
   );
+  final firstFormKey = GlobalKey<FormState>();
 }

@@ -1,6 +1,5 @@
 import 'package:customs/core/error/validator.dart';
-import 'package:customs/core/widgets/custom_drop_down.dart';
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,17 @@ class BeneficiaryForm extends StatefulWidget {
 }
 
 class _BeneficiaryFormState extends State<BeneficiaryForm> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String? dro1;
+  String? dro2;
+  String? dro3;
+  String? dro4;
+  String? dro5;
+  String? dro6;
+  String? dro7;
+  String? dro8;
+  String? dro9;
+  String? dro10;
+
   @override
   Widget build(BuildContext context) {
     final homeCubit = context.read<HomeCubit>();
@@ -25,25 +34,34 @@ class _BeneficiaryFormState extends State<BeneficiaryForm> {
           Row(
             children: [
               Expanded(
-                child: CustomTextField(
-                  validator: (value) => Validator.validateEmpty(),
+                child: CustomInputField(
+                  type: InputType.text,
                   label: 'mainfist_number'.tr(),
+                  validator: (value) => Validator.validateEmpty(),
                 ),
               ),
               SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
+                  type: InputType.text,
+                  label: 'policy_number'.tr(),
                   validator: (value) => Validator.validateEmpty(),
-                  items: ['1', '2', '3'],
-                  title: 'policy_number'.tr(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'custom_system'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro1 = value;
+                    });
+                  },
+                  selectedValue: dro1,
+                  label: 'custom_system'.tr(),
+                  searchable: true,
+                  type: InputType.dropdown,
                 ),
               ),
             ],
@@ -52,17 +70,26 @@ class _BeneficiaryFormState extends State<BeneficiaryForm> {
           Row(
             children: [
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
+                  type: InputType.text,
                   validator: (value) => Validator.validateEmpty(),
                   label: 'policy_number'.tr(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'policy_collect_type'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro2 = value;
+                    });
+                  },
+                  selectedValue: dro2,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'policy_collect_type'.tr(),
                 ),
               ),
             ],
@@ -72,17 +99,26 @@ class _BeneficiaryFormState extends State<BeneficiaryForm> {
           Row(
             children: [
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
+                  type: InputType.text,
                   label: 'date_of_shipping'.tr(),
                   validator: (value) => Validator.validateEmpty(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'country_of_shipping'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro3 = value;
+                    });
+                  },
+                  selectedValue: dro3,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'country_of_shipping'.tr(),
                 ),
               ),
             ],
@@ -92,18 +128,34 @@ class _BeneficiaryFormState extends State<BeneficiaryForm> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'port_of_shipping'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro4 = value;
+                    });
+                  },
+                  selectedValue: dro4,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'port_of_shipping'.tr(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'port_of_arrival'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro5 = value;
+                    });
+                  },
+                  selectedValue: dro5,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'port_of_arrival'.tr(),
                 ),
               ),
             ],
@@ -113,45 +165,85 @@ class _BeneficiaryFormState extends State<BeneficiaryForm> {
           Row(
             children: [
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'shipping_direction'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro6 = value;
+                    });
+                  },
+                  selectedValue: dro6,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'shipping_direction'.tr(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'port_of_transit'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro7 = value;
+                    });
+                  },
+                  selectedValue: dro7,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'port_of_transit'.tr(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'delivery_type'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro8 = value;
+                    });
+                  },
+                  selectedValue: dro8,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'delivery_type'.tr(),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'danger_indicator'.tr(),
+                  onChanged: (value) {
+                    setState(() {
+                      dro9 = value;
+                    });
+                  },
+                  selectedValue: dro9,
+                  type: InputType.dropdown,
+                  searchable: true,
+                  label: 'danger_indicator'.tr(),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 30),
-          CustomTextField(
+          CustomInputField(
+            type: InputType.text,
             validator: (value) => Validator.validateEmpty(),
             label: 'notes'.tr(),
+            onChanged: (value) {
+              setState(() {
+                dro10 = value;
+              });
+            },
+            selectedValue: dro10,
           ),
           const SizedBox(height: 30),
-          CustomTextField(
+          CustomInputField(
+            type: InputType.text,
             validator: (value) => Validator.validateEmpty(),
             label: 'goods_description'.tr(),
           ),

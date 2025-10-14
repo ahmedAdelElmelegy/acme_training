@@ -1,7 +1,6 @@
 import 'package:customs/core/error/validator.dart';
 import 'package:customs/core/widgets/custom_btn.dart';
-import 'package:customs/core/widgets/custom_drop_down.dart';
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +13,8 @@ class BillOfLadingForm extends StatefulWidget {
 
 class _BillOfLadingFormState extends State<BillOfLadingForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String? dro1;
+  String? dro2;
 
   @override
   Widget build(BuildContext context) {
@@ -24,42 +25,53 @@ class _BillOfLadingFormState extends State<BillOfLadingForm> {
           Row(
             children: [
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['1', '2', '3'],
-                  title: 'mainfist_number'.tr(),
+                  label: 'mainfist_number'.tr(),
+                  type: InputType.dropdown,
+                  selectedValue: dro1,
+                  onChanged: (value) => setState(() => dro1 = value),
+                  // onLoadMore: fetchMoreCountries, // Lazy Loading
+                  searchable: true,
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'mainfist_type'.tr(),
+                  type: InputType.text,
                 ),
               ),
             ],
           ),
           const SizedBox(height: 30),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'policy_number'.tr(),
+            type: InputType.text,
           ),
 
           const SizedBox(height: 30),
           Row(
             children: [
               Expanded(
-                child: CustomDropDown(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   items: ['الإمارات', 'السعودية', 'الكويت'],
-                  title: 'country_of_shipping'.tr(),
+                  label: 'country_of_shipping'.tr(),
+                  type: InputType.dropdown,
+                  selectedValue: dro2,
+                  onChanged: (value) => setState(() => dro2 = value),
                 ),
               ),
               const SizedBox(width: 30),
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'port_of_shipping'.tr(),
+                  type: InputType.text,
                 ),
               ),
             ],
@@ -69,16 +81,19 @@ class _BillOfLadingFormState extends State<BillOfLadingForm> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Expanded(
-                child: CustomTextField(
+                child: CustomInputField(
                   validator: (value) => Validator.validateEmpty(),
                   label: 'port_of_arrival'.tr(),
+                  type: InputType.text,
                 ),
               ),
               const SizedBox(width: 200),
               CustomBtn(
                 text: 'search'.tr(),
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {}
+                  if (formKey.currentState!.validate()) {
+                    debugPrint('searching');
+                  }
                 },
               ),
             ],

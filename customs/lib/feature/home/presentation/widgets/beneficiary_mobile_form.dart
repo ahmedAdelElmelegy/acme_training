@@ -1,6 +1,5 @@
 import 'package:customs/core/error/validator.dart';
-import 'package:customs/core/widgets/custom_drop_down.dart';
-import 'package:customs/core/widgets/custom_text_field.dart';
+import 'package:customs/core/widgets/custom_input_widget.dart';
 import 'package:customs/feature/home/presentation/manager/cubit/home_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,16 @@ class BeneficiaryMobileForm extends StatefulWidget {
 }
 
 class _BeneficiaryMobileFormState extends State<BeneficiaryMobileForm> {
+  String? dro1;
+  String? dro2;
+  String? dro3;
+  String? dro4;
+  String? dro5;
+  String? dro6;
+  String? dro7;
+  String? dro8;
+  String? dro9;
+  String? dro10;
   @override
   Widget build(BuildContext context) {
     final formKey = context.read<HomeCubit>().formKeys;
@@ -22,89 +31,154 @@ class _BeneficiaryMobileFormState extends State<BeneficiaryMobileForm> {
       key: formKey[0],
       child: Column(
         children: [
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'mainfist_number'.tr(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'policy_number'.tr(),
+            label: 'policy_number'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro1 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'custom_system'.tr(),
+            label: 'custom_system'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro2 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'policy_number'.tr(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'policy_collect_type'.tr(),
+            label: 'policy_collect_type'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro3 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomInputField(
             label: 'date_of_shipping'.tr(),
             validator: (value) => Validator.validateEmpty(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'country_of_shipping'.tr(),
+            label: 'country_of_shipping'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro4 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'port_of_shipping'.tr(),
+            label: 'port_of_shipping'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro5 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'port_of_arrival'.tr(),
+            label: 'port_of_arrival'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro6 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'shipping_direction'.tr(),
+            label: 'shipping_direction'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro7 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'port_of_transit'.tr(),
+            label: 'port_of_transit'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro8 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'delivery_type'.tr(),
+            label: 'delivery_type'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro9 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomDropDown(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             items: ['1', '2', '3'],
-            title: 'danger_indicator'.tr(),
+            label: 'danger_indicator'.tr(),
+            type: InputType.dropdown,
+            onChanged: (value) {
+              setState(() {
+                dro10 = value;
+              });
+            },
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'notes'.tr(),
+            type: InputType.text,
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomInputField(
             validator: (value) => Validator.validateEmpty(),
             label: 'goods_description'.tr(),
+            type: InputType.text,
           ),
         ],
       ),
