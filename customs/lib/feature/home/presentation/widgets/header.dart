@@ -10,7 +10,9 @@ import 'package:easy_localization/easy_localization.dart';
 
 class Header extends StatefulWidget {
   final Function(int)? onIndexChange;
-  const Header({super.key, this.onIndexChange});
+  final void Function()? onTap;
+
+  const Header({super.key, this.onIndexChange, this.onTap});
 
   @override
   State<Header> createState() => _HeaderState();
@@ -78,6 +80,7 @@ class _HeaderState extends State<Header> {
               ),
             ],
           ),
+          InkWell(onTap: widget.onTap, child: Icon(Icons.menu)),
         ],
       ),
     );

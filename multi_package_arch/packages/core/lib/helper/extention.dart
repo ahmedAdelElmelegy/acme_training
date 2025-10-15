@@ -15,24 +15,25 @@ final GoRouter router = GoRouter(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
         return ResponsiveLayout(
-            mobile: (context) => const SplashScreen(),
-            tablet: (context) => const SplashScreen(),
-            desktop: (context) => const SplashScreen());
+          mobile: (context) => const SplashScreen(),
+          tablet: (context) => const SplashScreen(),
+          desktop: (context) => const SplashScreen(),
+        );
       },
-    ),
-    GoRoute(
-        path: '/main',
-        builder: (BuildContext context, GoRouterState state) {
-          return MainScreen();
-        },
-        routes: [
-          GoRoute(
-            path: 'home',
-            builder: (BuildContext context, GoRouterState state) {
-              return const HomeScreen();
-            },
-          ),
-          GoRoute(
+      routes: [
+        GoRoute(
+          path: 'main',
+          builder: (BuildContext context, GoRouterState state) {
+            return MainScreen();
+          },
+          routes: [
+            GoRoute(
+              path: 'home',
+              builder: (BuildContext context, GoRouterState state) {
+                return const HomeScreen();
+              },
+            ),
+            GoRoute(
               path: 'category',
               builder: (BuildContext context, GoRouterState state) {
                 return const CategoryScreen();
@@ -44,19 +45,23 @@ final GoRouter router = GoRouter(
                     return const ProductScreen();
                   },
                 ),
-              ]),
-          GoRoute(
-            path: 'map',
-            builder: (BuildContext context, GoRouterState state) {
-              return const MapScreen();
-            },
-          ),
-          GoRoute(
-            path: 'setting',
-            builder: (BuildContext context, GoRouterState state) {
-              return const SettingScreen();
-            },
-          ),
-        ]),
+              ],
+            ),
+            GoRoute(
+              path: 'map',
+              builder: (BuildContext context, GoRouterState state) {
+                return const MapScreen();
+              },
+            ),
+            GoRoute(
+              path: 'setting',
+              builder: (BuildContext context, GoRouterState state) {
+                return const SettingScreen();
+              },
+            ),
+          ],
+        ),
+      ],
+    ),
   ],
 );

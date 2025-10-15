@@ -96,9 +96,13 @@
     "support_and_help":"الدعم والمساعدة",
     "frequently_asked_questions":"الاسئلة الشائعة",
     "more":" المزيد",
-    "privacy":"سياسة الخصوصية"
+    "privacy":"سياسة الخصوصية",
+
+    "update_mainfist":"استكمال تعديل  منافست",
    
-    
+    "back":"رجوع",
+    "recharge_request":"طلب اعادة شحن خارجية"
+
    
 
 }

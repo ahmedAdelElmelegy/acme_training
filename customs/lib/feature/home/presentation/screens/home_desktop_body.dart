@@ -21,6 +21,7 @@ class HomeDesktopBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 120),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 30),
           Container(
