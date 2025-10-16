@@ -6,6 +6,7 @@ import 'package:customs/feature/home/presentation/screens/home_desktop_body.dart
 import 'package:customs/feature/home/presentation/widgets/fotter.dart';
 import 'package:customs/feature/home/presentation/widgets/header.dart';
 import 'package:customs/feature/services/presentation/screens/services.dart';
+import 'package:customs/feature/update_mainfist/presentation/screens/update_mainfist_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainDesktopLayout extends StatefulWidget {
@@ -93,11 +94,12 @@ class _MainDesktopLayoutState extends State<MainDesktopLayout>
                     },
                   ),
 
+                  // UpdateMainfistBody(),
+                  // SizedBox(height: 200),
                   AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
                     child: screens[currentIndex],
                   ),
-
                   const Footer(),
                 ],
               ),
