@@ -7,24 +7,77 @@ import 'package:customs/feature/home/presentation/widgets/profile_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:go_router/go_router.dart';
 
 class Header extends StatefulWidget {
   final Function(int)? onIndexChange;
-  final void Function()? onTap;
+  final bool isTablet;
 
-  const Header({super.key, this.onIndexChange, this.onTap});
+  const Header({super.key, this.onIndexChange, this.isTablet = false});
 
   @override
   State<Header> createState() => _HeaderState();
 }
 
 class _HeaderState extends State<Header> {
-  static List<String> name = ['main', 'services', 'about_us', 'contact'];
   int currentIndex = 0;
+  late GoRouter _router;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _router = GoRouter.of(context);
+      _router.routerDelegate.addListener(_onRouteChanged);
+      _onRouteChanged();
+      // change in the first time
+    });
+  }
+
+  void _onRouteChanged() {
+    final uri = _router.state.uri;
+    final segments = uri.pathSegments;
+
+    if (segments.isEmpty) return;
+
+    final first = segments.first;
+    debugPrint(first);
+
+    setState(() {
+      switch (first) {
+        case 'home':
+          currentIndex = 0;
+          break;
+        case 'services':
+          currentIndex = 1;
+          break;
+        case 'about':
+          currentIndex = 2;
+          break;
+        case 'contact':
+          currentIndex = 3;
+          break;
+        default:
+          currentIndex = 0;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _router.routerDelegate.removeListener(_onRouteChanged);
+    super.dispose();
+  }
+
+  static List<String> name = ['main', 'services', 'about_us', 'contact'];
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 120, vertical: 16),
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.isTablet ? 24 : 120,
+        vertical: 16,
+      ),
       decoration: BoxDecoration(
         color: ColorManager.white,
         boxShadow: [
@@ -40,7 +93,7 @@ class _HeaderState extends State<Header> {
         children: [
           Image.asset(AppImages.logo, width: 55, height: 55),
 
-          const SizedBox(width: 80),
+          SizedBox(width: widget.isTablet ? 24 : 80),
 
           Expanded(
             child: Wrap(
@@ -63,6 +116,8 @@ class _HeaderState extends State<Header> {
             ),
           ),
 
+          const SizedBox(width: 24),
+
           Row(
             children: [
               NotificationIcon(),
@@ -80,7 +135,6 @@ class _HeaderState extends State<Header> {
               ),
             ],
           ),
-          InkWell(onTap: widget.onTap, child: Icon(Icons.menu)),
         ],
       ),
     );

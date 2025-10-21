@@ -13,6 +13,7 @@ import 'package:customs/feature/home/presentation/widgets/parties_mobile_form.da
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeMobileBody extends StatelessWidget {
   const HomeMobileBody({super.key});
@@ -20,6 +21,7 @@ class HomeMobileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final formKeys = context.read<HomeCubit>().formKeys;
     debugPrint(size.width.toString());
     return SingleChildScrollView(
       child: Column(
@@ -50,35 +52,37 @@ class HomeMobileBody extends StatelessWidget {
                 const SizedBox(height: 30),
                 HomeCardSection(
                   title: 'policy_data'.tr(),
-                  child: BeneficiaryMobileForm(),
+                  child: Form(key: formKeys[0], child: BeneficiaryMobileForm()),
                 ),
                 const SizedBox(height: 30),
                 HomeCardSection(
                   title: 'parties'.tr(),
-                  child: PartiesMobileForm(),
+                  child: Form(key: formKeys[1], child: PartiesMobileForm()),
                 ),
                 const SizedBox(height: 30),
                 HomeCardSection(
                   title: 'acid_data'.tr(),
-                  child: AcidDataMobileForm(),
+                  child: Form(key: formKeys[2], child: AcidDataMobileForm()),
                 ),
                 const SizedBox(height: 30),
 
                 HomeCardSection(
                   title: 'goods_data'.tr(),
-                  child: GoodsDataMobileForm(),
+                  child: Form(key: formKeys[3], child: GoodsDataMobileForm()),
                 ),
                 const SizedBox(height: 30),
                 HomeCardSection(
                   title: 'basic_data'.tr(),
-                  child: BasicDataMobileForm(),
+                  child: Form(key: formKeys[4], child: BasicDataMobileForm()),
                 ),
                 const SizedBox(height: 30),
                 CustomBtn(
                   width: double.infinity,
                   color: ColorManager.primary,
                   text: 'mainfist_btn'.tr(),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/home/recharge_mainfist');
+                  },
                 ),
                 const SizedBox(height: 16),
                 SizedBox(width: 16),

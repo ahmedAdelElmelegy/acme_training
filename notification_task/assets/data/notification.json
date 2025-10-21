@@ -1,0 +1,42 @@
+{
+  "data": [
+    {
+      "id": "2862f9a2-b941-4196-a328-fc18f432bccf",
+      "type": "App\\Notifications\\DatabaseNotification",
+      "data": {
+        "email": "ahmed.samir@acmesaico.net",
+        "name": "mog2806",
+        "message": [
+          null,
+          [
+            "سوف يتم التوقف عن العمل علي الإقرار 9992220551151482025فغ لمدة ساعة",
+            "تاريخ اصدار الاشعار : 2025-10-15 00:19:17"
+          ],
+          null
+        ],
+        "read_at": null,
+        "created_at": "2025-10-14T21:19:17.000000Z",
+        "updated_at": "2025-10-14T21:19:17.000000Z"
+      }
+    },
+    {
+      "id": "d1039dd5-22a6-43dd-bd07-8a4ee5a24a6c",
+      "type": "App\\Notifications\\DatabaseNotification",
+      "data": {
+        "email": "ahmed.samir@acmesaico.net",
+        "name": "mog2806",
+        "message": [
+          null,
+          [
+            "سوف يتم التوقف عن العمل علي الإقرار 9992220551151482025فغ لمدة ساعة",
+            "تاريخ اصدار الاشعار : 2025-10-15 00:19:17"
+          ],
+          null
+        ],
+        "read_at": null,
+        "created_at": "2025-10-14T21:19:17.000000Z",
+        "updated_at": "2025-10-14T21:19:17.000000Z"
+      }
+    }
+  ]
+}

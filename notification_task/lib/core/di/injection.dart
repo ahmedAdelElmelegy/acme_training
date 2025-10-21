@@ -5,7 +5,7 @@ import 'package:notification_task/core/utils/dio_factory.dart';
 import 'package:notification_task/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:notification_task/features/home/data/repo_imp/home_repo_imp.dart';
 import 'package:notification_task/features/home/domain/use_case/home_use_case.dart';
-import 'package:notification_task/features/home/presentation/manager/cubit/notification_cubit.dart';
+import 'package:notification_task/features/home/presentation/manager/get_notification/notification_cubit.dart';
 
 final getIt = GetIt.instance;
 Future<void> init() async {

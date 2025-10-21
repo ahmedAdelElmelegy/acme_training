@@ -1,11 +1,17 @@
 class NotificationEntity {
-  final String nameEn;
-  final String emailEn;
-  final List<List<String>?> messageEn;
+  final String idEntity;
+  final String email;
+  final String name;
+  List<List<String>?> message;
+  final DateTime? readAtEntity;
+  final DateTime? createdAtEntity;
 
   NotificationEntity({
-    required this.nameEn,
-    required this.emailEn,
-    required this.messageEn,
+    required this.idEntity,
+    required this.email,
+    required this.name,
+    required this.message,
+    this.readAtEntity,
+    required this.createdAtEntity,
   });
 }

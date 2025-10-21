@@ -12,6 +12,7 @@ import 'package:customs/feature/home/presentation/widgets/parties_form.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeTabletBody extends StatelessWidget {
   const HomeTabletBody({super.key});
@@ -19,6 +20,7 @@ class HomeTabletBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final formKeys = context.read<HomeCubit>().formKeys;
     debugPrint(size.width.toString());
     return SingleChildScrollView(
       child: Column(
@@ -49,8 +51,7 @@ class HomeTabletBody extends StatelessWidget {
                           SizedBox(width: 16),
                           OutlinedButton.icon(
                             onPressed: () {
-                              final forms = context.read<HomeCubit>().formKeys;
-                              for (var form in forms) {
+                              for (var form in formKeys) {
                                 if (form.currentState!.validate()) {
                                   debugPrint('valid');
                                 }
@@ -63,7 +64,9 @@ class HomeTabletBody extends StatelessWidget {
                           CustomBtn(
                             height: 40,
                             text: 'mainfist_btn'.tr(),
-                            onPressed: () {},
+                            onPressed: () {
+                              context.go('/home/recharge_mainfist');
+                            },
                           ),
                         ],
                       ),
@@ -78,22 +81,28 @@ class HomeTabletBody extends StatelessWidget {
                 const SizedBox(height: 30),
                 HomeCardSection(
                   title: 'policy_data'.tr(),
-                  child: BeneficiaryForm(),
+                  child: Form(key: formKeys[0], child: BeneficiaryForm()),
                 ),
                 const SizedBox(height: 30),
-                HomeCardSection(title: 'parties'.tr(), child: PartiesForm()),
+                HomeCardSection(
+                  title: 'parties'.tr(),
+                  child: Form(key: formKeys[1], child: PartiesForm()),
+                ),
                 const SizedBox(height: 30),
-                HomeCardSection(title: 'acid_data'.tr(), child: AcidDataForm()),
+                HomeCardSection(
+                  title: 'acid_data'.tr(),
+                  child: Form(key: formKeys[2], child: AcidDataForm()),
+                ),
                 const SizedBox(height: 30),
 
                 HomeCardSection(
                   title: 'goods_data'.tr(),
-                  child: GoodsDataForm(),
+                  child: Form(key: formKeys[3], child: GoodsDataForm()),
                 ),
                 const SizedBox(height: 30),
                 HomeCardSection(
                   title: 'basic_data'.tr(),
-                  child: BasicDataForm(),
+                  child: Form(key: formKeys[4], child: BasicDataForm()),
                 ),
               ],
             ),

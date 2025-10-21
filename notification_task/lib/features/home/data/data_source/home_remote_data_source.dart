@@ -1,6 +1,8 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:notification_task/core/network/api_services.dart';
-import 'package:notification_task/features/home/data/models/notification/Response/notification_data.dart';
+import 'package:notification_task/features/home/data/models/notification/Response/notification_model_data.dart';
 import 'package:notification_task/features/home/data/models/notification/body/notification_request_body.dart';
 import 'package:notification_task/features/home/domain/entity/notification_entity.dart';
 
@@ -17,15 +19,22 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   Future<List<NotificationEntity>> fetchNotifications(
     NotificationRequestBody params,
   ) async {
-    String url = dotenv.env['NotificationUrl']!;
-    final response = await apiService.get(
-      endpoint: url,
+    // final response =
+    //  await apiService.get(
+    //   endpoint: ApiEndpoints.notification,
 
-      query: params.toJson(),
+    //   query: params.toJson(),
+    // );
+
+    final String jsonString = await rootBundle.loadString(
+      'assets/data/notification.json',
     );
+
+    final Map<String, dynamic> response = json.decode(jsonString);
+
     List<NotificationEntity> notificationList = [];
-    for (var element in response['data']['data']) {
-      notificationList.add(NotificationData.fromJson(element));
+    for (var element in response['data']) {
+      notificationList.add(NotificationModelData.fromJson(element));
     }
     return notificationList;
   }

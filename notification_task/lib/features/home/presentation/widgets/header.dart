@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:notification_task/core/helper/constants.dart';
+import 'package:notification_task/core/theme/colors.dart';
+import 'package:notification_task/core/theme/style.dart';
+import 'package:notification_task/features/home/presentation/manager/get_notification/notification_cubit.dart';
+import 'package:notification_task/features/home/presentation/widgets/nav_bar_item.dart';
+import 'package:notification_task/features/home/presentation/widgets/notification_icon.dart';
+import 'package:notification_task/features/home/presentation/widgets/profile_image.dart';
+
+class Header extends StatefulWidget {
+  final Function(int)? onIndexChange;
+  final bool isTablet;
+
+  const Header({super.key, this.onIndexChange, this.isTablet = false});
+
+  @override
+  State<Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<Header> {
+  int currentIndex = 0;
+  bool isNotificationIconHovered = false;
+  late GoRouter _router;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _router = GoRouter.of(context);
+      _router.routerDelegate.addListener(_onRouteChanged);
+      _onRouteChanged();
+      // change in the first time
+    });
+  }
+
+  void _onRouteChanged() {
+    final uri = _router.state.uri;
+    final segments = uri.pathSegments;
+
+    if (segments.isEmpty) return;
+
+    final first = segments.first;
+    debugPrint(first);
+
+    setState(() {
+      switch (first) {
+        case 'home':
+          currentIndex = 0;
+          break;
+        case 'services':
+          currentIndex = 1;
+          break;
+        case 'about':
+          currentIndex = 2;
+          break;
+        case 'contact':
+          currentIndex = 3;
+          break;
+        default:
+          currentIndex = 0;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _router.routerDelegate.removeListener(_onRouteChanged);
+    super.dispose();
+  }
+
+  static List<String> name = ['main', 'services', 'about_us', 'contact'];
+
+  @override
+  Widget build(BuildContext context) {
+    final notificationCubit = context.watch<NotificationCubit>();
+
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: widget.isTablet ? 24 : 120,
+        vertical: 16,
+      ),
+      decoration: BoxDecoration(
+        color: ColorManager.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(AppImages.logo, width: 55, height: 55),
+          const SizedBox(width: 80),
+          Expanded(
+            child: Wrap(
+              alignment: WrapAlignment.start,
+              spacing: 40,
+              runSpacing: 8,
+              children: List.generate(
+                name.length,
+                (index) => NavBarItem(
+                  title: name[index].tr(),
+                  onTap: () {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                    widget.onIndexChange!(index);
+                  },
+                  isActive: index == currentIndex,
+                ),
+              ),
+            ),
+          ),
+          Row(
+            children: [
+              InkWell(
+                onTap: notificationCubit.toggleNotificationWebView,
+                child: NotificationIcon(),
+              ),
+              const SizedBox(width: 16),
+              const ProfileImage(),
+              const SizedBox(width: 12),
+              Row(
+                children: [
+                  Text(
+                    'my_account'.tr(),
+                    style: AppTextStyle.font16Meduim(context),
+                  ),
+                  const Icon(Icons.keyboard_arrow_down_sharp),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
