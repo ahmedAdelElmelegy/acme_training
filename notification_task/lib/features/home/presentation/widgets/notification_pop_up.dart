@@ -21,11 +21,11 @@ class NotificationPopup extends StatelessWidget {
               color: Colors.white,
               shadowColor: Colors.black26,
               child: Container(
-                height: 500,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey.shade200),
                 ),
+                constraints: BoxConstraints(maxWidth: 350, maxHeight: 500),
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [

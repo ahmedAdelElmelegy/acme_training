@@ -66,7 +66,7 @@ class _MainDesktopLayoutState extends State<MainDesktopLayout> {
             top: 90,
             left: 20,
 
-            width: notificationCubit.isNotificationWebViewOpen ? 400 : 0,
+            width: notificationCubit.isNotificationWebViewOpen ? 420 : 0,
             child: AnimatedOpacity(
               duration: const Duration(milliseconds: 300),
               opacity: notificationCubit.isNotificationWebViewOpen ? 1 : 0,

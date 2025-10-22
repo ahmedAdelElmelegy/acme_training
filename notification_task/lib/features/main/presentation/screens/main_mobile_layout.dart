@@ -73,7 +73,7 @@ class _MainMobileLayoutState extends State<MainMobileLayout> {
                     top: 95,
                     left: 20,
                     width: notificationCubit.isNotificationWebViewOpen
-                        ? 250
+                        ? 350
                         : 0,
 
                     child: NotificationPopup(),

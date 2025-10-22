@@ -42,12 +42,12 @@ class NotificationItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  notification.name,
+                  notification.nameEntity ?? '',
                   style: AppTextStyle.font14Bold(context),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  notification.message[1].toString(),
+                  notification.messageEntity?.headerEntity ?? '',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyle.font12Meduim(

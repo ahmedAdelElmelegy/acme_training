@@ -1,17 +1,31 @@
 class NotificationEntity {
-  final String idEntity;
-  final String email;
-  final String name;
-  List<List<String>?> message;
+  final String? idEntity;
+  final String? emailEntity;
+  final String? nameEntity;
+  MessageEntity? messageEntity;
   final DateTime? readAtEntity;
   final DateTime? createdAtEntity;
 
   NotificationEntity({
-    required this.idEntity,
-    required this.email,
-    required this.name,
-    required this.message,
+    this.idEntity,
+    this.emailEntity,
+    this.nameEntity,
+    this.messageEntity,
     this.readAtEntity,
-    required this.createdAtEntity,
+    this.createdAtEntity,
+  });
+}
+
+class MessageEntity {
+  final String? subjectEntity;
+  final String? headerEntity;
+  List<dynamic>? bodyLinesEntity;
+  final String? footerEntity;
+
+  MessageEntity({
+    this.subjectEntity,
+    this.headerEntity,
+    this.bodyLinesEntity,
+    this.footerEntity,
   });
 }
