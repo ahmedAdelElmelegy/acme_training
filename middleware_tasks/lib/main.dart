@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   // إنشاء الـ Cubit
+  final AuthCubit _authCubit = AuthCubit();
 
   // إعداد GoRouter
   final GoRouter _router = GoRouter(
@@ -55,11 +56,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'GoRouter بسيط',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      routerConfig: _router,
-      debugShowCheckedModeBanner: false,
+    return BlocProvider(
+      // توفير الـ Cubit للتطبيق
+      create: (context) => _authCubit,
+      child: MaterialApp.router(
+        title: 'GoRouter بسيط',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        routerConfig: _router,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
